@@ -1423,7 +1423,7 @@ class Medoo
             } elseif ($this->isRaw($value) and property_exists($value, 'value')
                       and (strpos($value->value, "JSON_OBJECT") !== false or
                            strpos($value->value, "JSON_ARRAY") !== false or
-                           strpos($value->value, "->'$.") !== false )) { //customization by SAN not a Medoo maintained code
+                           strpos($value->value, "->>'$.") !== false )) { //customization by SAN not a Medoo maintained code
 
 				preg_match("/(" . $this::TABLE_PATTERN ."\.)?(?<column>" .$this::COLUMN_PATTERN .")(?:\s*\((?<alias>" .
                            $this::ALIAS_PATTERN. ")\))?(?:\s*\[(?<type>(?:String|Bool|Int|Number|Object|JSON))\])?/u", $key, $keyMatch);
@@ -1514,7 +1514,7 @@ class Medoo
                          //customization by SAN not a Medoo maintained code
                 		if(strpos($value->value, "JSON_OBJECT") === false and
                 			strpos($value->value, "JSON_ARRAY") === false and
-                			strpos($value->value, "->'$.") === false){
+                			strpos($value->value, "->>'$.") === false){
                 			continue;
                 		}
                     }
